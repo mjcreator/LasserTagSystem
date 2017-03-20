@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lasser Tag Controller</title>
+		<style>.table{border="2"}</style>
+	</head>
+	<body>
+		<h2><u>Overview</u></h2>
+		
+		<p style="color:green;">status: </p>
+		<table border="2">
+			<tr>
+				<th>ID</th> <th>Status</th> <th>Address</th> <th>Type</th> <th>Team</th> <th>Name</th> <th>Damage</th> <th>Armor</th> <th>Rate of Fire (milliseconds)</th> <th>Choice</th> <th>test connection</th>
+			</tr>
+			
+			<!-- #1 -->
+			<tr>
+				<td>0</td> <td>${status}</td> <td>${address}</td> <td>${type}</td> <td>${team}</td> <td><input type="text" name="Pname" value=""></td> <td><input type="number" name="Pdam" value=""></td> <td><input type="number" name="Parm" value=""></td> <td><input type="number" name="Prof" value=""></td> <td><input type="checkbox" name="Pselect" value="true"></td> <td><button>test</button></td>
+			</tr>
+			
+			
+		</table>
+		
+		<h2><u>Game Setings</u></h2>
+		<form action="webServerTest.cgi" method="get">
+			<u>Game Mode:</u>
+			<input type="radio" name="Gmode" selected value="1">Free for all
+			<input type="radio" name="Gmode" value="2">Team Battle
+			<input type="radio" name="Gmode" value="3">Capture the Flag
+			<input type="radio" name="Gmode" value="4">Elimination
+			<input type="radio" name="Gmode" value="5">Team Elimination
+			<input type="radio" name="Gmode" value="6">Kill the Caption
+			<input type="radio" name="Gmode" value="7">Plague<br><br>
+			
+			Friendly Fire:
+			<select>
+				<option name="friendFire" value="false">off</option>
+				<option name="friendFire" value="true">on</option>
+			</select>
+			Player advantages(if not: uses ID0 as the settings):
+			<select>
+				<option name="Gadvant" value="true">yes</option>
+				<option name="Gadvant" value="false">no</option>
+			</select><br><br>
+			
+			Player Health: <input type="text" name="health" value="100"><br>
+			Player Lives: <input type="text" name="lives" value="3"><br>
+			
+			<br><input type="submit" value="Begin">
+		</form>
+	</body>
+</html>
