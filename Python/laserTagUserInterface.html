@@ -22,31 +22,32 @@
 		</table>
 		
 		<h2><u>Game Setings</u></h2>
-		<form action="webServerTest.cgi" method="get">
-			<u>Game Mode:</u>
-			<input type="radio" name="Gmode" selected value="1">Free for all
-			<input type="radio" name="Gmode" value="2">Team Battle
-			<input type="radio" name="Gmode" value="3">Capture the Flag
-			<input type="radio" name="Gmode" value="4">Elimination
-			<input type="radio" name="Gmode" value="5">Team Elimination
-			<input type="radio" name="Gmode" value="6">Kill the Caption
-			<input type="radio" name="Gmode" value="7">Plague<br><br>
-			
+		<form method="post">
+			<div>
+				<u>Game Mode:</u>
+				<input type="radio" name="Gmode" checked value="1">Free for all
+				<input type="radio" name="Gmode" value="2">Team Battle
+				<input type="radio" name="Gmode" value="3">Capture the Flag
+				<input type="radio" name="Gmode" value="4">Elimination
+				<input type="radio" name="Gmode" value="5">Team Elimination
+				<input type="radio" name="Gmode" value="6">Kill the Caption
+				<input type="radio" name="Gmode" value="7">Plague<br><br>
+			</div>
 			Friendly Fire:
-			<select>
-				<option name="friendFire" value="false">off</option>
-				<option name="friendFire" value="true">on</option>
+			<select name="friendFire">
+				<option selected value="no">off</option>
+				<option value="yes">on</option>
 			</select>
-			Player advantages(if not: uses ID0 as the settings):
-			<select>
-				<option name="Gadvant" value="true">yes</option>
-				<option name="Gadvant" value="false">no</option>
+			<br>Player advantages:
+			<select name="Gadvant">
+				<option value="yes" selected>yes</option>
+				<option value="no">no</option>
 			</select><br><br>
+			Player Health: <input type="number" name="health" value="100" min="1" max="500"><br>
+			Player Lives: <input type="number" name="lives" value="3" min="1" max="20"><br>
 			
-			Player Health: <input type="text" name="health" value="100"><br>
-			Player Lives: <input type="text" name="lives" value="3"><br>
-			
-			<br><input type="submit" value="Begin">
+			<br>
+			<input type="submit" value="Begin">
 		</form>
 	</body>
 </html>

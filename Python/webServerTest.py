@@ -1,5 +1,5 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
-import time
+import cgi
 # HTTPRequestHandler class
 class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
  
@@ -19,6 +19,30 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
         # Write content as utf-8 data
         file.close()
         return
+      
+  def do_POST(self):
+    form = cgi.FieldStorage(
+      fp=self.rfile, 
+      headers=self.headers,
+      environ={'REQUEST_METHOD':'POST',
+               'CONTENT_TYPE':self.headers['Content-Type'],
+               })
+    self.send_response(200)
+    print(form.getvalue("Gmode"))
+    print(form.getvalue("friendFire"))
+    print(form.getvalue("Gadvant"))
+    print(form.getvalue("health"))
+    print(form.getvalue("lives"))
+    #print()
+    # Send headers
+    self.send_header('Content-type','text/html')
+    self.end_headers()
+
+    # Send message back to client
+    message = form.getvalue("Gmode")
+    #self.wfile.write(bytes(message,"utf16"))
+    # Write content as utf-8 data
+    return
  
 def run():
   print('starting server...')
