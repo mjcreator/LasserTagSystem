@@ -35,34 +35,7 @@ void setup() {
 
 
 void loop() {
-    const uint16_t port = 8081;
-    const char * host = "192.168.1.50"; // ip or dns
-    Serial.print("connecting to ");
-    Serial.println(host);
-
-    // Use WiFiClient class to create TCP connections
-    WiFiClient client;
-
-    if (!client.connect(host, port)) {
-        Serial.println("connection failed");
-        Serial.println("wait 5 sec...");
-        delay(5000);
-        return;
-    }
-    num++;
-    // This will send the request to the server
-    client.print("device 0: " + String(num));
-    //client.print(num);
-
-    //read back one line from server
-    String line = client.readStringUntil('\r');
-    client.println(line);
-    Serial.println(line);
-
-    Serial.println("closing connection");
-    //client.stop();
     
-    Serial.println("wait 1 sec...");
     delay(1000);
 }
 
