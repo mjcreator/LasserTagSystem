@@ -15,8 +15,9 @@ String pName = "num: " + String(id);
 int damage = 100;
 int armor = 100;
 int fireRate = 100;
-int mode = 0;
 byte team = 0;
+
+int mode = 0;
 int health = 100;
 int lives = 3;
 int amo = 200;
@@ -140,11 +141,7 @@ void setup() {
   // init done
   display.setTextColor(1);
   display.setTextWrap(false);
-
-
   delay(500);
-  Serial.print("connecting to ");
-  Serial.println(host);
 
   // Use WiFiClient class to create TCP connections
   WiFiClient client;

@@ -19,7 +19,7 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
         data = str(self.data).replace("b'","").replace("'","")
         values = data.split(",")
         print(values)
-        if(values[0] == "init"):
+        if(values[0].upper() == "INIT"):
             f = open("data.txt","r+")
             fr = f.read()
             print(fr)
@@ -29,17 +29,23 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
             f.write(self.client_address[0] + "\n")
             self.request.sendall(bytes("OK","utf8"))
             f.close()
+        #if(values[0].upper() == "CHECK"):
+
+        #if(values[0].upper() == "SYNC"):
+            
         else:
         # just send back the same data, but upper-cased
             self.request.sendall(self.data.upper())
+        return
 
 if __name__ == "__main__":
     f = open("data.txt","w")
     f.write("")
     f.close
-
+    
     # Create the server, binding to localhost on port 9999
     server = socketserver.TCPServer((HOST, PORT), MyTCPHandler)# as server:
+    print("running")
     # Activate the server; this will keep running until you
     # interrupt the program with Ctrl-C
     server.serve_forever()
