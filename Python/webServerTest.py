@@ -73,7 +73,6 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
 			<br>
 			<input type="submit" value="Begin">
 		</form>
-		<!--<iframe src="matthew.html">-->
 	</body>
 </html>"""
         self.wfile.write(bytes(message,"utf16"))
