@@ -18,7 +18,19 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
 <html>
 	<head>
 		<title>Lasser Tag Controller</title>
-		<style>.table{border="2"}</style>
+		<script>
+		function senddata(data){
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+				  document.getElementById("demo").innerHTML = this.responseText;
+				}
+			};
+			xhttp.open("POST", "", true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send("data="+data);
+		}
+		</script>
 	</head>
 	<body>
 		<h2><u>Overview</u></h2>
@@ -87,16 +99,19 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                'CONTENT_TYPE':self.headers['Content-Type'],
                })
     self.send_response(200)
-    print(form.getvalue("Gmode"))
-    print(form.getvalue("friendFire"))
-    print(form.getvalue("Gadvant"))
-    print(form.getvalue("health"))
-    print(form.getvalue("lives"))
-    #print()
+    if(form.getvalue("data")!="None"):
+      print(form.getvalue("data"))
+    else:
+      print(form.getvalue("Gmode"))
+      print(form.getvalue("friendFire"))
+      print(form.getvalue("Gadvant"))
+      print(form.getvalue("health"))
+      print(form.getvalue("lives"))
+      #print()
     # Send headers
     self.send_header('Content-type','text/html')
     self.end_headers()
-
+    
     # Send message back to client
     message = form.getvalue("Gmode")
     #self.wfile.write(bytes(message,"utf16"))
